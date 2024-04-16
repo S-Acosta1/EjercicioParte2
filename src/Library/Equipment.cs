@@ -4,6 +4,8 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
+using System.Text.RegularExpressions;
+
 namespace Full_GRASP_And_SOLID.Library
 {
     public class Equipment
@@ -13,9 +15,9 @@ namespace Full_GRASP_And_SOLID.Library
             this.Description = description;
             this.HourlyCost = hourlyCost;
         }
-
         public string Description { get; set; }
 
         public double HourlyCost { get; set; }
+        
     }
 }

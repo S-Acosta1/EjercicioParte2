@@ -9,7 +9,7 @@ using System.Collections;
 
 namespace Full_GRASP_And_SOLID.Library
 {
-    public class Recipe
+    public class Recipe                             // El error que existia en esta clase era que se encargaba de almacenar los pasos y tambien de imprimirlos en pantalla
     {
         private ArrayList steps = new ArrayList();
 
@@ -24,15 +24,9 @@ namespace Full_GRASP_And_SOLID.Library
         {
             this.steps.Remove(step);
         }
-
-        public void PrintRecipe()
+        public ArrayList Steps                      // Agregamos este ArrayList Steps para que se use de manera publica y las otras clases puedan acceder a el sin modificar su contenido.
         {
-            Console.WriteLine($"Receta de {this.FinalProduct.Description}:");
-            foreach (Step step in this.steps)
-            {
-                Console.WriteLine($"{step.Quantity} de '{step.Input.Description}' " +
-                    $"usando '{step.Equipment.Description}' durante {step.Time}");
-            }
+            get { return steps; }
         }
     }
 }

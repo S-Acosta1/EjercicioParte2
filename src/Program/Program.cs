@@ -11,24 +11,24 @@ using Full_GRASP_And_SOLID.Library;
 
 namespace Full_GRASP_And_SOLID
 {
-    public class Program
+    public class Program                                                // Los patrones y principios que utilizamos fue el patron Expert y el principio SRP lo cual nos dice que cada clase debe tener una unica tarea general
+                                                                        // y las tareas deben ser asignadas a las clases que contengan los datos suficientes para lograrlas
     {
-        private static ArrayList productCatalog = new ArrayList();
+        private static ArrayList productCatalog = new ArrayList();      // Creamos un arreglo que contenga el catalogo del producto
 
-        private static ArrayList equipmentCatalog = new ArrayList();
-
+        private static ArrayList equipmentCatalog = new ArrayList();    // Creamos un arreglo que contenga el catalogo de las herramientas que necesitemos para nuestro producto
         public static void Main(string[] args)
         {
             PopulateCatalogs();
 
-            Recipe recipe = new Recipe();
+            Recipe recipe = new Recipe(); //Aqui creamos nuestra receta
             recipe.FinalProduct = GetProduct("Café con leche");
             recipe.AddStep(new Step(GetProduct("Café"), 100, GetEquipment("Cafetera"), 120));
             recipe.AddStep(new Step(GetProduct("Leche"), 200, GetEquipment("Hervidor"), 60));
-            recipe.PrintRecipe();
+            ConsolePrinter.Printer(recipe); //Esta es nuestra nueva clase encargada de imprimir la receta con su correspondiente precio
         }
 
-        private static void PopulateCatalogs()
+        private static void PopulateCatalogs() //Aqui detallamos los productos y herramientas que utilizaremos
         {
             AddProductToCatalog("Café", 100);
             AddProductToCatalog("Leche", 200);
@@ -37,13 +37,12 @@ namespace Full_GRASP_And_SOLID
             AddEquipmentToCatalog("Cafetera", 1000);
             AddEquipmentToCatalog("Hervidor", 2000);
         }
-
-        private static void AddProductToCatalog(string description, double unitCost)
+        private static void AddProductToCatalog(string description, double unitCost) //Aqui agregamos los productos a nuestro arreglo de productos
         {
             productCatalog.Add(new Product(description, unitCost));
         }
 
-        private static void AddEquipmentToCatalog(string description, double hourlyCost)
+        private static void AddEquipmentToCatalog(string description, double hourlyCost) //Aqui agregamos las herramientas a nuestro arreglo de equipos
         {
             equipmentCatalog.Add(new Equipment(description, hourlyCost));
         }
